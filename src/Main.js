@@ -1,36 +1,21 @@
 import React from 'react'
+import ScoreBox from './ScoreBox'
+import Input from './Input'
+import OddOrEven from './OddOrEven'
 
-const Main = ({handleInput,yPoint,mPoint,mScore,yScore,batBall}) => {
+const Main = ({handleInput,yPoint,mPoint,mScore,yScore,batBall,handleOddEven}) => {
   return (
     <main className='main'>
         <section className="container">
             <section className="output-box">
-                <section className="score-box">
-                    <section className="score-box-left">
-                        <h2>Score</h2>
-                    </section>
-                    <section className="score-box-right">
-                        <input type="phone" value={yScore} />
-                        <input type="phone" value={mScore}  />
-                    </section>
-                </section>
-                <section className="point-box">
-                    <div>{yPoint}</div>
-                    <span>Vs</span>
-                    <div>{mPoint}</div>
-                </section>
+                <ScoreBox yPoint={yPoint} mPoint={mPoint} mScore={mScore} yScore={yScore} />
             </section>
             <section className="display-box">
                 <h2>{batBall}</h2>
             </section>
             <section className="input-box">
-                <button onClick={(e)=>handleInput(e.target.innerText)}>1</button>
-                <button onClick={(e)=>handleInput(e.target.innerText)}>2</button>
-                <button onClick={(e)=>handleInput(e.target.innerText)}>3</button>
-                <button onClick={(e)=>handleInput(e.target.innerText)}>4</button>
-                <button onClick={(e)=>handleInput(e.target.innerText)}>5</button>
-                <button onClick={(e)=>handleInput(e.target.innerText)}>6</button>
-                <button onClick={(e)=>handleInput(e.target.innerText)}>0</button>
+                {/* <OddOrEven handleOddEven={handleOddEven} /> */}
+                <Input handleInput={handleInput} />
             </section>
         </section>
     </main>
