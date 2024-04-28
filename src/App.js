@@ -4,7 +4,7 @@ import Main from './Main'
 
 const App = () => {
   const [yScore,setYScore]=useState(0)
-  const [mScore,setMScore]=useState("Machine")
+  const [mScore,setMScore]=useState(0)
   const [yPoint,setYPoint]=useState()
   const [mPoint,setMPoint]=useState()
   const [batBall,setBatBall]=useState("Hand Cricket")
