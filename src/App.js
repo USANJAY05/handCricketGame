@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './App.css'
 import Main from './Main'
 import AlertBox from './AlertBox'
@@ -10,7 +10,6 @@ const App = () => {
   const [mPoint,setMPoint]=useState(0)
   const [batBall,setBatBall]=useState("Batting")
   const [bb,setBB]=useState(0)
-  const [num,setNum]=useState(0)
   const [alert,setAlert]=useState("none")
   const [msg,setMsg]=useState()
   let [count,setCount]=useState(0)
@@ -19,7 +18,6 @@ const App = () => {
   const handleReset = () => {
     window.location.reload()
   };
-  
   
 
   const handleInput=(val)=>{
@@ -37,10 +35,33 @@ const App = () => {
       const score=randomNumber+mScore
       setMScore(score)
     }
-    (bb===0)?setBatBall("Batting"):setBatBall("Bownling")
     
-    
-    console.log(count)
+
+    if(value===randomNumber && count<=2){
+      setBB(!bb)
+      count+=1
+      setCount(count)
+      setAd(1)
+    }
+    if(bb===0){
+      you()
+    }
+    else{
+      machine()
+    }
+console.log(alert)
+console.log(batBall)
+
+
+  }
+
+  useEffect(()=>{
+    if(count===0){
+      setBatBall("Batting")
+    }
+    else{
+      setBatBall("Bowling")
+    }
     if(ad===1&&yScore<mScore){
       setAlert()
       setMsg("YOU LOSS")
@@ -54,48 +75,9 @@ const App = () => {
         setMsg("YOU Won")
       }
     }
-    else if(value===randomNumber && count<=2){
-      setBB(!bb)
-      count+=1
-      setCount(count)
-      setAd(1)
-    }
-    else if(bb===0){
-      you()
-    }
-    else{
-      machine()
-    }
-    // if(value===randomNumber){
-    //   setNum(1)
-    // }
-    // else if(num===0){
-    //   machine()
-    // }
-    // else if(num===1){
-    //   you()
-    //   if(num===randomNumber || value<randomNumber){
-    //     setNum(2)
-    //   }
-    // }
-    // else{
-    //   if(mScore==="YOU LOSE" || mScore==="YOU WON"){
-    //     console.log("HI")
-    //   }
-    //   else if(mScore>yScore){
-    //     setAlert(true)
-    //     setMsg("You Lose")
-    //   }
-    //   else{
-    //     setAlert(true)
-    //     setMsg("You won")
-    //   }
-    // }
+  },[count, ad, yScore, mScore])
 
 
-
-
-  }
   return (
     <section className='app'>
       <Main handleInput={handleInput} yScore={yScore} mScore={mScore} yPoint={yPoint} mPoint={mPoint} batBall={batBall} />
