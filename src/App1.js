@@ -26,7 +26,7 @@ const App = () => {
   };
 
   const handleOddEven=(value)=>{
-    setBatBall("Enter Number")
+    setBatBall("Enter a Number")
     console.log(value)
     setOdEven("none")
     setInputNum(true)
@@ -37,11 +37,18 @@ const App = () => {
     console.log(value)
     const randomNumber = Math.floor(Math.random() * 7);
     console.log(randomNumber+value)
-    if((value+randomNumber)%2===parseInt(odEvenVal)){
+    const total=randomNumber+value
+    setMPoint(randomNumber)
+    setYPoint(value)
+    // setYScore("Total:"+total)
+    // setMScore("Total:"+total)
+    if((value+randomNumber)%2!==parseInt(odEvenVal)){
         setBB(0)
+        setBatBall("Batting")
     }
     else{
         console.log("odd")
+        setBatBall("Bowling")
         setBB(1)
     }
     setInput("flex")
@@ -56,12 +63,14 @@ const App = () => {
 
     const you=()=>{
       setBatBall("Batting")
+      console.log(batBall)
       const score=value+yScore
       setYScore(score)
     }
     const machine=()=>{
         setBatBall("Bowling")
       const score=randomNumber+mScore
+      console.log(batBall)
       setMScore(score)
     }
     
