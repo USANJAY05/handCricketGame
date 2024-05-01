@@ -99,7 +99,6 @@ const App = () => {
   useEffect(()=>{
     //console.log(ad)
     if(bb===0&&count<2){
-      setBatBall("Batting")
       console.log("HI1")
       if(count===1&&yScore>mScore){
         setAlert()
