@@ -133,7 +133,7 @@ const App = () => {
         setc(1)
     }
     
-  },[count, ad, yScore, mScore])
+  },[count, ad, yScore, mScore,bb, c, mPoint, yPoint])
 
 
   return (
