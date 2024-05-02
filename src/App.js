@@ -39,8 +39,7 @@ const App = () => {
     console.log(randomNumber+value)
     setMPoint(randomNumber)
     setYPoint(value)
-    // setYScore("Total:"+total)
-    // setMScore("Total:"+total)
+
     if((value+randomNumber)%2!==parseInt(odEvenVal)){
         setBB(0)
         setBatBall("Batting")
@@ -51,6 +50,7 @@ const App = () => {
         setBB(1)
     }
     setInput("flex")
+    setInputNum("none")
   }
   
 
@@ -80,8 +80,7 @@ const App = () => {
       count+=1
       setCount(count)
       setAd(1)
-      //console.log(bb,count)
-      //console.log(count,mPoint,yPoint)
+
     }
     else if(bb===0){
       you()
