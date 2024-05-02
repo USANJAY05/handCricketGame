@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useRef } from 'react'
 import './App.css'
 import Main from './Main'
 import AlertBox from './AlertBox'
+import clickSound from './click.wav'; // Import your click sound file
 
 const App = () => {
+  const audioRef = useRef(new Audio(clickSound)); // Create a ref for the Audio object
   const [c,setc]=useState(0)  
   const [yScore,setYScore]=useState(0)
   const [mScore,setMScore]=useState(0)
@@ -26,6 +28,7 @@ const App = () => {
   };
 
   const handleOddEven=(value)=>{
+    audioRef.current.play();
     setBatBall("Enter a Number")
     console.log(value)
     setOdEven("none")
@@ -33,13 +36,15 @@ const App = () => {
     setOdEvenVal(value)
   }
   const handleNum=(val)=>{
+    audioRef.current.play();
     const value=parseInt(val)
     console.log(value)
     const randomNumber = Math.floor(Math.random() * 7);
     console.log(randomNumber+value)
     setMPoint(randomNumber)
     setYPoint(value)
-
+    // setYScore("Total:"+total)
+    // setMScore("Total:"+total)
     if((value+randomNumber)%2!==parseInt(odEvenVal)){
         setBB(0)
         setBatBall("Batting")
@@ -50,11 +55,11 @@ const App = () => {
         setBB(1)
     }
     setInput("flex")
-    setInputNum("none")
   }
   
 
   const handleInput=(val)=>{
+    audioRef.current.play();
     const value=parseInt(val)
     const randomNumber = Math.floor(Math.random() * 7);
     setMPoint(randomNumber)
@@ -80,7 +85,8 @@ const App = () => {
       count+=1
       setCount(count)
       setAd(1)
-
+      //console.log(bb,count)
+      //console.log(count,mPoint,yPoint)
     }
     else if(bb===0){
       you()
@@ -96,11 +102,11 @@ const App = () => {
   }
 
   useEffect(()=>{
-    //console.log(ad)
     if(bb===0&&count>=1){
 
       setBatBall("Batting")
     }
+    //console.log(ad)
     if(bb===0&&count<2){
       console.log("HI1")
       if(count===1&&yScore>mScore){
