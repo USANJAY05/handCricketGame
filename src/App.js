@@ -97,6 +97,10 @@ const App = () => {
 
   useEffect(()=>{
     //console.log(ad)
+    if(bb===0&&count>=1){
+
+      setBatBall("Batting")
+    }
     if(bb===0&&count<2){
       console.log("HI1")
       if(count===1&&yScore>mScore){
