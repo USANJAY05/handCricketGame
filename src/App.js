@@ -55,6 +55,7 @@ const App = () => {
         setBB(1)
     }
     setInput("flex")
+    setInputNum("none")
   }
   
 
